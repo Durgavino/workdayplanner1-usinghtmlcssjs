@@ -47,25 +47,19 @@ function timeblock() {
   
        document.getElementById(`textarea${index+9}`).style.backgroundColor='red';
 
-
     }
       
-
     else if (time < rowlistarr.length) {
-     
-      
+ 
+   
 
 document.getElementById(`textarea${index+9}`).style.backgroundColor='green';
 
-
-
     }
     else if (time > rowlistarr.length) {
-   
-   
+    
 
 document.getElementById(`textarea${index+9}`).style.backgroundColor='gray';
-
 
     }
 
@@ -74,13 +68,43 @@ document.getElementById(`textarea${index+9}`).style.backgroundColor='gray';
 }
 timeblock();
 
-const sbtn=document.getElementById('sbtn');
-const textarea9=document.getElementById('textarea9');
 
-sbtn.addEventListener('click',save);
 
-function save(){
-  localStorage.setItem('txt',textarea9.value);
-  return localStorage.getItem('txt');
+
+
+function save()
+{
+
+var storedvalue=localStorage.getItem('textarea9');
+
+
+var textarea9=document.getElementById('textarea9').value;
+ 
+  
+if(storedvalue){
+  storedvalue.push(textarea9);
+  
+}
+else{
+  storedvalue=[textarea9];
+}
+  localStorage.setItem('text',JSON.stringify(storedvalue));
+
 }
 
+
+function get()
+{
+  
+var storedvalue=localStorage.getItem('textarea9');
+
+
+if (storedvalue)
+{
+document.getElementById('textarea9').value=storedvalue;
+  
+
+}
+}
+
+location.reload(true);
